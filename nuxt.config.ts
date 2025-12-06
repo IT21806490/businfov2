@@ -21,7 +21,16 @@ export default defineNuxtConfig({
   },
 
   app: {
-    baseURL: "/TechSolveLab/",  // Must match repo name exactly
+    baseURL: "/businfo/",
     buildAssetsDir: "assets",
+
+    head: {
+      title: "Businfo.click",
+      link: [
+        // Main favicon
+        { rel: "icon", type: "image/png", href: "/businfo/favicon.png" },
+
+      ]
+    }
   }
 });
