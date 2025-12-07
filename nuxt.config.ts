@@ -31,18 +31,17 @@ export default defineNuxtConfig({
   },
 
   app: {
-    baseURL: "/businfov2/",
+    baseURL: "/", // root for custom domain
     buildAssetsDir: "_nuxt/",
     head: {
       title: "Businfo.click",
-      link: [{ rel: "icon", type: "image/png", href: "/businfov2/favicon.png" }],
+      link: [{ rel: "icon", type: "image/png", href: "/favicon.png" }], // root favicon
     },
   },
 
   router: {
     options: {
-      // Remove hashMode for clean URLs
-      // hashMode: true
+      // hashMode removed for clean URLs
     }
   }
 });
