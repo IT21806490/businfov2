@@ -5,13 +5,7 @@ export default defineNuxtConfig({
 
   modules: [
     "@nuxtjs/tailwindcss",
-    "@nuxtjs/sitemap", 
   ],
-
-  site: {
-    url: 'https://businfo.click', 
-    name: 'Businfo.click',
-  },
 
   css: ["~/assets/tailwind.css"],
 
@@ -25,23 +19,21 @@ export default defineNuxtConfig({
     preset: "github_pages",
     prerender: {
       crawlLinks: true,
-      routes: ['/'],       // Pre-render home page
+      routes: ['/'],      
       failOnError: false,
     }
   },
 
   app: {
-    baseURL: "/", // root for custom domain
+    baseURL: "/", 
     buildAssetsDir: "_nuxt/",
     head: {
       title: "Businfo.click",
-      link: [{ rel: "icon", type: "image/png", href: "/favicon.png" }], // root favicon
+      link: [{ rel: "icon", type: "image/png", href: "/favicon.png" }],
     },
   },
 
   router: {
-    options: {
-      // hashMode removed for clean URLs
-    }
+    options: {}
   }
 });
