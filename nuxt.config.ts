@@ -1,46 +1,39 @@
-import fs from 'fs'
-import path from 'path'
-import { SitemapStream, streamToPromise } from 'sitemap'
-import { Readable } from 'stream'
-import allRoutesData from './data/allroutes.json'
+import { defineNuxtConfig } from "nuxt/config";
 
 export default defineNuxtConfig({
-  ssr: false,
-  nitro: { preset: 'github_pages' },
+  compatibilityDate: '2025-11-30',
 
-  hooks: {
-    'nitro:build:before': async () => {
-      const baseUrl = 'https://businfo.click'
+  modules: [
+    "@nuxtjs/tailwindcss",
+  ],
 
-      // Static pages
-      const staticUrls = [
-        { url: '/', changefreq: 'weekly', priority: 1 },
-        { url: '/contact', changefreq: 'weekly', priority: 0.8 },
-        { url: '/findroutes', changefreq: 'weekly', priority: 0.8 },
-      ]
+  css: ["~/assets/tailwind.css"],
 
-      // Dynamic bus routes
-      const dynamicUrls = allRoutesData.map(r => ({
-        url: `/routes/${r.Route_No}`,
-        changefreq: 'weekly',
-        priority: 0.7,
-      }))
+  postcss: {
+    plugins: { tailwindcss: {}, autoprefixer: {} },
+  },
 
-      const allUrls = [...staticUrls, ...dynamicUrls]
+  ssr: false, // SPA mode
 
-      // Generate sitemap XML
-      const stream = new SitemapStream({ hostname: baseUrl })
-      const xml = await streamToPromise(Readable.from(allUrls).pipe(stream)).then(d => d.toString())
-
-      // Ensure dist folder exists
-      const distPath = path.resolve('./dist')
-      if (!fs.existsSync(distPath)) {
-        fs.mkdirSync(distPath, { recursive: true })
-      }
-
-      // Write sitemap.xml
-      fs.writeFileSync(path.join(distPath, 'sitemap.xml'), xml)
-      console.log('✅ sitemap.xml generated successfully')
+  nitro: { 
+    preset: "github_pages",
+    prerender: {
+      crawlLinks: true,
+      routes: ['/'],      
+      failOnError: false,
     }
+  },
+
+  app: {
+    baseURL: "/", 
+    buildAssetsDir: "_nuxt/",
+    head: {
+      title: "Businfo.click",
+      link: [{ rel: "icon", type: "image/png", href: "/favicon.png" }],
+    },
+  },
+
+  router: {
+    options: {}
   }
-})
+});
