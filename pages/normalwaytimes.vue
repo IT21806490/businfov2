@@ -49,7 +49,7 @@
             :key="lang.code"
             @click="language = lang.code"
             :class="[
-              'px-6 py-2 rounded-full border-2 transition-all duration-300 font-bold transform active:scale-95 hover:scale-105 shadow-md',
+              'px-6 py-2 rounded-full border-2 transition-all duration-300 font-bold transform active:scale-95 hover:scale-105 shadow-md text-sm sm:text-base',
               language === lang.code
                 ? 'bg-blue-600 text-white border-blue-600 ring-4 ring-blue-300'
                 : 'bg-white text-gray-700 border-gray-300 hover:border-blue-400'
@@ -66,8 +66,13 @@
               <h3 class="text-xl font-extrabold text-blue-800 mb-3">💡 Quick Guide: How to Find Your Schedule</h3>
               <p class="text-gray-700 text-sm sm:text-base leading-relaxed mb-4">{{ tips[language] || tips['en'] }}</p>
               <div class="bg-white rounded-xl p-4 border border-blue-200 shadow-inner">
-                <p class="text-sm text-gray-600 font-medium flex items-center">
-                  <span class="font-bold text-blue-700 mr-2">Example:</span> Colombo ➜ Kandy <span class="mx-2 text-gray-400">|</span> කොළඹ ➜ මහනුවර <span class="mx-2 text-gray-400">|</span> கொழும்பு ➜ கண்டி
+                <p class="text-sm text-gray-600 font-medium flex items-center flex-wrap">
+                  <span class="font-bold text-blue-700 mr-2 flex-shrink-0">Example:</span> 
+                  <span class="truncate">Colombo ➜ Kandy</span> 
+                  <span class="mx-2 text-gray-400 hidden sm:inline">|</span>
+                  <span class="truncate hidden sm:inline">කොළඹ ➜ මහනුවර</span> 
+                  <span class="mx-2 text-gray-400 hidden sm:inline">|</span> 
+                  <span class="truncate hidden sm:inline">கொழும்பு ➜ கண்டி</span>
                 </p>
               </div>
             </div>
@@ -76,7 +81,7 @@
 
         <div
           ref="searchCardRef"
-          class="bg-white rounded-3xl shadow-2xl p-8 sm:p-10 mb-10 border-2 border-gray-100 ring-4 ring-blue-100 hover:ring-blue-200 transition-all duration-700"
+          class="bg-white rounded-3xl shadow-2xl p-6 sm:p-10 mb-10 border-2 border-gray-100 ring-4 ring-blue-100 hover:ring-blue-200 transition-all duration-700"
         >
           <h2 class="text-2xl sm:text-3xl font-extrabold text-blue-700 mb-8 text-center border-b pb-4">
             🔎 Find Your Bus Route
@@ -93,7 +98,7 @@
                 placeholder="e.g., Colombo, Kandy..."
                 v-model="origin"
                 @focus="showOriginSuggestions = true"
-                class="w-full border-2 border-gray-300 rounded-xl p-4 focus:ring-4 focus:ring-blue-200 focus:border-blue-500 shadow-lg transition-all text-base hover:border-blue-400 font-medium"
+                class="w-full border-2 border-gray-300 rounded-xl p-3 sm:p-4 focus:ring-4 focus:ring-blue-200 focus:border-blue-500 shadow-lg transition-all text-base hover:border-blue-400 font-medium"
                 autocomplete="off"
               />
               <ul v-if="showOriginSuggestions && originSuggestions.filter(o => o.toLowerCase().includes(origin.toLowerCase())).length > 0" class="absolute z-20 w-full max-h-48 overflow-y-auto bg-white border-2 border-blue-300 rounded-xl mt-2 shadow-2xl animate-slide-down">
@@ -101,7 +106,7 @@
                   v-for="(o, idx) in originSuggestions.filter((o) => o.toLowerCase().includes(origin.toLowerCase()))"
                   :key="idx"
                   @click="selectOrigin(o)"
-                  class="cursor-pointer px-4 py-3 hover:bg-blue-500 hover:text-white transition-all font-medium border-b border-gray-100 last:border-b-0 flex items-center"
+                  class="cursor-pointer px-4 py-3 hover:bg-blue-500 hover:text-white transition-all font-medium border-b border-gray-100 last:border-b-0 flex items-center text-sm sm:text-base"
                 >
                   <MapPin :size="16" class="mr-2 opacity-70" />
                   {{ o }}
@@ -119,7 +124,7 @@
                 placeholder="e.g., Galle, Jaffna..."
                 v-model="destination"
                 @focus="showDestinationSuggestions = true"
-                class="w-full border-2 border-gray-300 rounded-xl p-4 focus:ring-4 focus:ring-blue-200 focus:border-blue-500 shadow-lg transition-all text-base hover:border-blue-400 font-medium"
+                class="w-full border-2 border-gray-300 rounded-xl p-3 sm:p-4 focus:ring-4 focus:ring-blue-200 focus:border-blue-500 shadow-lg transition-all text-base hover:border-blue-400 font-medium"
                 autocomplete="off"
               />
               <ul v-if="showDestinationSuggestions && destinationSuggestions.filter(d => d.toLowerCase().includes(destination.toLowerCase())).length > 0" class="absolute z-20 w-full max-h-48 overflow-y-auto bg-white border-2 border-blue-300 rounded-xl mt-2 shadow-2xl animate-slide-down">
@@ -127,7 +132,7 @@
                   v-for="(d, idx) in destinationSuggestions.filter((d) => d.toLowerCase().includes(destination.toLowerCase()))"
                   :key="idx"
                   @click="selectDestination(d)"
-                  class="cursor-pointer px-4 py-3 hover:bg-blue-500 hover:text-white transition-all font-medium border-b border-gray-100 last:border-b-0 flex items-center"
+                  class="cursor-pointer px-4 py-3 hover:bg-blue-500 hover:text-white transition-all font-medium border-b border-gray-100 last:border-b-0 flex items-center text-sm sm:text-base"
                 >
                   <MapPin :size="16" class="mr-2 opacity-70" />
                   {{ d }}
@@ -140,14 +145,14 @@
             <button
               @click="swapOriginDestination"
               :disabled="!origin || !destination"
-              class="flex items-center justify-center w-full sm:w-auto px-8 py-3 bg-gradient-to-r from-purple-500 to-indigo-600 text-white rounded-xl hover:from-purple-600 hover:to-indigo-700 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed font-extrabold transform active:scale-95 hover:scale-[1.01] shadow-xl hover:shadow-2xl ring-4 ring-purple-100 disabled:ring-0"
+              class="flex items-center justify-center w-full sm:w-auto px-6 sm:px-8 py-3 bg-gradient-to-r from-purple-500 to-indigo-600 text-white rounded-xl hover:from-purple-600 hover:to-indigo-700 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed font-extrabold transform active:scale-95 hover:scale-[1.01] shadow-xl hover:shadow-2xl ring-4 ring-purple-100 disabled:ring-0 text-sm sm:text-base"
             >
               <RefreshCw :size="18" class="mr-2" /> Swap Locations
             </button>
 
             <button
               @click="clearSelections"
-              class="flex items-center justify-center w-full sm:w-auto px-8 py-3 bg-gray-200 text-gray-700 rounded-xl hover:bg-gray-300 transition-all duration-300 font-semibold transform active:scale-95 hover:scale-[1.01] shadow-lg hover:shadow-xl"
+              class="flex items-center justify-center w-full sm:w-auto px-6 sm:px-8 py-3 bg-gray-200 text-gray-700 rounded-xl hover:bg-gray-300 transition-all duration-300 font-semibold transform active:scale-95 hover:scale-[1.01] shadow-lg hover:shadow-xl text-sm sm:text-base"
             >
               <Trash2 :size="18" class="mr-2" /> Clear Search
             </button>
@@ -200,10 +205,10 @@
 
                   <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-6 border-b pb-4 border-gray-100">
                     <div class="mb-3 sm:mb-0">
-                      <h3 class="text-2xl sm:text-3xl font-extrabold text-gray-800 flex items-center">
+                      <h3 class="text-xl sm:text-3xl font-extrabold text-gray-800 flex items-center flex-wrap">
                         <Bus class="text-blue-600 mr-3 flex-shrink-0" :size="30" />
                         {{ route.origin }}
-                        <ArrowRight class="mx-2 text-blue-500" :size="24" />
+                        <ArrowRight class="mx-2 text-blue-500 flex-shrink-0" :size="24" />
                         {{ route.destination }}
                       </h3>
                       <p v-if="route.via" class="text-sm text-purple-600 mt-2 ml-10 font-bold flex items-center p-1 px-3 bg-purple-50 rounded-full max-w-fit border border-purple-200">
@@ -211,24 +216,24 @@
                       </p>
                     </div>
 
-                    <div class="bg-blue-600 text-white font-extrabold text-xl px-5 py-2 rounded-full shadow-2xl flex items-center ring-4 ring-blue-100">
+                    <div class="bg-blue-600 text-white font-extrabold text-lg sm:text-xl px-5 py-2 rounded-full shadow-2xl flex items-center ring-4 ring-blue-100">
                       <Hash class="mr-1" :size="20" /> Route {{ route.route_no }}
                     </div>
                   </div>
 
                   <div class="mt-4">
-                    <h4 class="text-xl font-bold text-gray-700 mb-4 flex items-center border-b-2 border-green-100 pb-2">
+                    <h4 class="text-lg sm:text-xl font-bold text-gray-700 mb-4 flex items-center border-b-2 border-green-100 pb-2">
                       <Clock class="text-green-600 mr-2" />
                       Available Departure Times ({{ route.schedules.length }})
                     </h4>
 
-                    <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
+                    <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4">
                       <div
                         v-for="(schedule, schIndex) in (expandedRoutes[route.key] ? route.schedules : route.schedules.slice(0, 12))"
                         :key="schIndex"
-                        class="bg-green-50 rounded-xl p-4 text-center border-2 border-green-200 hover:bg-green-100 transition-all duration-200 shadow-md transform hover:scale-[1.02]"
+                        class="bg-green-50 rounded-xl p-3 sm:p-4 text-center border-2 border-green-200 hover:bg-green-100 transition-all duration-200 shadow-md transform hover:scale-[1.02]"
                       >
-                        <span class="text-2xl font-extrabold text-gray-900 block">
+                        <span class="text-xl sm:text-2xl font-extrabold text-gray-900 block">
                           {{ schedule.departure_time }}
                         </span>
                         <p class="text-xs text-gray-600 mt-1 flex items-center justify-center font-medium">
@@ -241,7 +246,7 @@
                     <button
                       v-if="route.schedules.length > 12"
                       @click="toggleScheduleExpansion(route.key)"
-                      class="w-full mt-6 p-3 bg-blue-600 text-white font-extrabold rounded-xl shadow-lg hover:bg-blue-700 active:scale-[0.98] transition-all flex items-center justify-center ring-2 ring-blue-300"
+                      class="w-full mt-6 p-3 bg-blue-600 text-white font-extrabold rounded-xl shadow-lg hover:bg-blue-700 active:scale-[0.98] transition-all flex items-center justify-center ring-2 ring-blue-300 text-sm sm:text-base"
                     >
                       <template v-if="expandedRoutes[route.key]">
                         <ChevronUp :size="20" class="mr-2" /> Show Less (Showing {{ route.schedules.length }} total times)
@@ -267,7 +272,7 @@
             <ChevronRight :size="20" class="transform rotate-180" />
           </button>
 
-          <span class="text-lg font-extrabold text-gray-700 bg-gray-100 px-5 py-2 rounded-full shadow-inner border border-gray-200">
+          <span class="text-base sm:text-lg font-extrabold text-gray-700 bg-gray-100 px-5 py-2 rounded-full shadow-inner border border-gray-200">
             Page <strong class="text-blue-600">{{ currentPage }}</strong> of <strong class="text-blue-600">{{ totalPages }}</strong>
           </span>
 
@@ -285,7 +290,7 @@
 
     <section class="bg-white py-16 shadow-inner">
       <div class="max-w-5xl mx-auto px-4 sm:px-6">
-        <h2 class="text-4xl font-extrabold text-blue-800 mb-10 text-center">Why Trust Businfo.click?</h2>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-blue-800 mb-10 text-center">Why Trust Businfo.click?</h2>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
           <div class="p-6 bg-blue-50 rounded-xl shadow-lg border-t-4 border-blue-600 transform hover:scale-[1.03] transition-all duration-300">
             <ShieldCheck :size="48" class="mx-auto text-blue-600 mb-4" />

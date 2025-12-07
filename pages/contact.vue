@@ -34,7 +34,7 @@
             <p class="text-gray-600 mb-6">
               Reach out via our Facebook page for instant messaging support regarding route queries, technical issues, or general feedback.
             </p>
-            <a href="https://www.facebook.com/businfo.click" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center px-8 py-3 bg-blue-600 text-white font-bold rounded-lg shadow-md hover:bg-blue-700 transition-all">
+            <a href="https://www.facebook.com/share/17hLFug3X8/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center px-8 py-3 bg-blue-600 text-white font-bold rounded-lg shadow-md hover:bg-blue-700 transition-all">
               Message Us on Facebook <ArrowRight class="ml-2" :size="20" />
             </a>
           </div>
