@@ -9,7 +9,7 @@ export default defineNuxtConfig({
   ],
 
   site: {
-    url: 'https://businfo.click', 
+    url: 'https://businfo.click',
     name: 'Businfo.click',
   },
 
@@ -19,24 +19,46 @@ export default defineNuxtConfig({
     plugins: { tailwindcss: {}, autoprefixer: {} },
   },
 
-  ssr: false, // SPA mode
+  ssr: false,
 
-  nitro: { 
+  nitro: {
+   
     preset: "github_pages",
     prerender: {
       crawlLinks: true,
-      routes: ['/'],       // Pre-render home page
+      routes: ['/'], 
       failOnError: false,
     }
   },
 
   app: {
-    baseURL: "/", // root for custom domain
+    baseURL: "/", 
     buildAssetsDir: "_nuxt/",
     head: {
       title: "Businfo.click",
-      link: [{ rel: "icon", type: "image/png", href: "/favicon.png" }], // root favicon
+      link: [{ rel: "icon", type: "image/png", href: "/favicon.png" }],
     },
+  },
+
+  sitemap: {
+
+    urls: [
+    '/', 
+    '/contact', 
+    '/findroutes', 
+    '/normalfare', 
+    '/normalwaytimes', 
+    '/highwayfare', 
+    '/privacy', 
+    '/terms'
+    ],
+
+    defaults: {
+      changefreq: 'weekly',
+      priority: 0.8,
+    },
+    
+
   },
 
   router: {
@@ -44,4 +66,4 @@ export default defineNuxtConfig({
       // hashMode removed for clean URLs
     }
   }
-});  
+});
