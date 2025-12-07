@@ -5,7 +5,14 @@ export default defineNuxtConfig({
 
   modules: [
     "@nuxtjs/tailwindcss",
+    "@nuxtjs/sitemap", 
   ],
+
+  site: {
+
+    url: 'https://businfo.click', 
+    name: 'Businfo.click',
+  },
 
   css: ["~/assets/tailwind.css"],
 
@@ -13,27 +20,22 @@ export default defineNuxtConfig({
     plugins: { tailwindcss: {}, autoprefixer: {} },
   },
 
-  ssr: false, // SPA mode
+  ssr: false,
 
-  nitro: { 
-    preset: "github_pages",
-    prerender: {
-      crawlLinks: true,
-      routes: ['/'],      
-      failOnError: false,
-    }
-  },
+  nitro: { preset: "github_pages" },
 
   app: {
-    baseURL: "/", 
+    baseURL: "/businfov2/",
     buildAssetsDir: "_nuxt/",
     head: {
       title: "Businfo.click",
-      link: [{ rel: "icon", type: "image/png", href: "/favicon.png" }],
+      link: [{ rel: "icon", type: "image/png", href: "/businfov2/favicon.png" }],
     },
   },
 
   router: {
-    options: {}
+    options: {
+      hashMode: true
+    }
   }
 });
