@@ -9,7 +9,6 @@ export default defineNuxtConfig({
   ],
 
   site: {
-
     url: 'https://businfo.click', 
     name: 'Businfo.click',
   },
@@ -20,9 +19,16 @@ export default defineNuxtConfig({
     plugins: { tailwindcss: {}, autoprefixer: {} },
   },
 
-  ssr: false,
+  ssr: false, // SPA mode
 
-  nitro: { preset: "github_pages" },
+  nitro: { 
+    preset: "github_pages",
+    prerender: {
+      crawlLinks: true,
+      routes: ['/'],       // Pre-render home page
+      failOnError: false,
+    }
+  },
 
   app: {
     baseURL: "/businfov2/",
@@ -35,7 +41,8 @@ export default defineNuxtConfig({
 
   router: {
     options: {
-      hashMode: true
+      // Remove hashMode for clean URLs
+      // hashMode: true
     }
   }
 });
