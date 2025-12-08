@@ -5,7 +5,7 @@ export default defineNuxtConfig({
 
   modules: [
     "@nuxtjs/tailwindcss",
-    "@nuxtjs/sitemap", 
+    "@nuxtjs/sitemap",
   ],
 
   site: {
@@ -22,11 +22,14 @@ export default defineNuxtConfig({
   ssr: false,
 
   nitro: {
-   
     preset: "github_pages",
     prerender: {
       crawlLinks: true,
-      routes: ['/'], 
+      routes: [
+        '/',               
+        '/sitemap.xml',    
+        '/robots.txt'      
+      ],
       failOnError: false,
     }
   },
@@ -40,27 +43,23 @@ export default defineNuxtConfig({
     },
   },
 
-  sitemap: {
-
-    urls: [
-    '/', 
-    '/contact', 
-    '/findroutes', 
-    '/normalfare', 
-    '/normalwaytimes', 
-    '/highwayfare', 
-    '/privacy', 
+sitemap: {
+  xsl: false,
+  urls: [
+    '/',
+    '/contact',
+    '/findroutes',
+    '/normalfare',
+    '/normalwaytimes',
+    '/highwayfare',
+    '/privacy',
     '/terms'
-    ],
-
-    defaults: {
-      changefreq: 'weekly',
-      priority: 0.8,
-    },
-    
-
-  },
-
+  ],
+  defaults: {
+    changefreq: 'weekly',
+    priority: 0.8
+  }
+},
   router: {
     options: {
       // hashMode removed for clean URLs
