@@ -1,11 +1,10 @@
 # Allow all search engines to crawl the site
 User-agent: *
-Disallow:
-
-# Prevent crawling of Nuxt build files (optional, cleaner)
+# Block framework/internal folders
 Disallow: /_nuxt/
 Disallow: /node_modules/
 Disallow: /__sitemap__/
 
-# Link to your XML sitemap for search engines
+# Sitemap location
 Sitemap: https://businfo.click/sitemap.xml
+
