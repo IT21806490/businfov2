@@ -27,6 +27,8 @@
           <NuxtLink to="/normalfare" class="text-gray-700 hover:text-blue-600 font-medium">Fares</NuxtLink>
           <NuxtLink to="/findroutes" class="text-gray-700 hover:text-blue-600 font-medium">Routes</NuxtLink>
           <NuxtLink to="/normalwaytimes" class="text-gray-700 hover:text-blue-600 font-medium">Timetables</NuxtLink>
+          <NuxtLink to="/standnumbers" class="text-gray-700 hover:text-blue-600 font-medium">Stand Numbers</NuxtLink>
+
 
           <NuxtLink
             to="/normalfare"
@@ -77,6 +79,7 @@
         <NuxtLink to="/normalfare" class="block text-gray-700 hover:text-blue-600 font-medium">Fares</NuxtLink>
         <NuxtLink to="/findroutes" class="block text-gray-700 hover:text-blue-600 font-medium">Routes</NuxtLink>
         <NuxtLink to="/normalwaytimes" class="block text-gray-700 hover:text-blue-600 font-medium">Timetables</NuxtLink>
+        <NuxtLink to="/standnumbers" class="block text-gray-700 hover:text-blue-600 font-medium">Stand Numbers</NuxtLink>
 
         <NuxtLink
           to="/normalfare"
