@@ -182,6 +182,7 @@ useHead({
 const query = ref("");
 const selectedProvince = ref("");
 
+// Format phone numbers: add leading 0 and space-separated for readability
 const formatPhone = (num) => {
   if (!num) return "";
   let str = String(num);
