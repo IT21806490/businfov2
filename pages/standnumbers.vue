@@ -1,3 +1,4 @@
+
 <template>
   <div class="min-h-screen bg-gradient-to-b from-gray-50 to-white flex flex-col">
     <Navbar />
@@ -173,7 +174,7 @@ useHead({
       property: "og:description",
       content: "Find contact numbers for bus stands, regional offices, and provincial authorities across Sri Lanka. Search by stand name, district, or province for easy access to bus services.",
     },
-    { rel: 'canonical', href: 'https://businfo.click/standnumbers' }, 
+    { rel: 'canonical', href: 'https://businfo.click/findcontacts' }, // Adjust URL as needed
   ],
 });
 
