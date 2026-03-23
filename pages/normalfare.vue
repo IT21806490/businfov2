@@ -37,7 +37,7 @@
           <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 mx-auto text-yellow-600 mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
           </svg>
-          <p class="text-xl sm:text-2xl font-bold text-yellow-700">July 04, 2025</p>
+          <p class="text-xl sm:text-2xl font-bold text-yellow-700">March 24, 2026</p>
           <p class="text-gray-600 text-sm sm:text-base font-semibold">Last Fare Update</p>
         </div>
       </div>
